@@ -7,10 +7,11 @@ class LoginInitial extends LoginState {}
 
 class LoginSuccessState extends LoginState {}
 
-class LoginFailureState extends LoginState {}
+class LoginFailureState extends LoginState {
+  String errorText;
+  LoginFailureState(this.errorText);
+}
 
 class LoginLoadingState extends LoginState {}
 
-class LoginPasswordVisibilityONState extends LoginState {}
-
-class LoginPasswordVisibilityOFFState extends LoginState {}
+class LoginPasswordVisibilityState extends LoginState {}

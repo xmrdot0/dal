@@ -9,8 +9,9 @@ part 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this.iAuthFacade) : super(LoginInitial());
   IAuthFacade iAuthFacade;
-  static LoginCubit get(context){
-    return BlocProvider.of(context);
+  bool? isVisible = false;
+  static get(context) {
+    return BlocProvider.of<LoginCubit>(context);
   }
 
   void signInPressed(
@@ -19,9 +20,16 @@ class LoginCubit extends Cubit<LoginState> {
     try {
       await iAuthFacade.signInWithEmailAndPassword(email, password);
       emit(LoginSuccessState());
-    } on FirebaseAuthException catch (e){
-      print(e.code);
-      emit(LoginFailureState());
+    } on FirebaseAuthException catch (e) {
+      emit(LoginFailureState(e.code));
+    } catch (e) {
+      emit(LoginFailureState("UnKnown Error"));
     }
+  }
+
+  void changeVisibiltyPressed() {
+    isVisible = !isVisible!;
+
+    emit(LoginPasswordVisibilityState());
   }
 }
