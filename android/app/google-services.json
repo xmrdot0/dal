@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "194126916308",
+    "project_id": "daal-5b7a7",
+    "storage_bucket": "daal-5b7a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194126916308:android:1a78e70b1a8f547124a941",
+        "android_client_info": {
+          "package_name": "com.example.dal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "194126916308-8a825iv0qf7c96r7gqetl4gr1eqmjopg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_pUxSv0uC1-_6iq16I0x4glxJwU791i8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "194126916308-8a825iv0qf7c96r7gqetl4gr1eqmjopg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
