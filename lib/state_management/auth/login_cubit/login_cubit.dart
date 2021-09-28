@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dal/models/auth/i_auth/i_auth_facade.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
@@ -18,7 +19,8 @@ class LoginCubit extends Cubit<LoginState> {
     try {
       await iAuthFacade.signInWithEmailAndPassword(email, password);
       emit(LoginSuccessState());
-    } catch (e) {
+    } on FirebaseAuthException catch (e){
+      print(e.code);
       emit(LoginFailureState());
     }
   }

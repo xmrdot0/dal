@@ -12,53 +12,52 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return BlocProvider(
+    return BlocProvider<LoginCubit>(
       create: (context) => LoginCubit(
         FireBaseAuthFacade(FirebaseAuth.instance),
       ),
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
-          if (state is LoginFailureState) {
-            FlushbarHelper.createError(message: 'Login Error');
-          }
+          // TODO: implement listener
         },
-        builder: (context, state) {
-          var loginCubit = LoginCubit.get(context);
-          return Scaffold(
-            body: Padding(
-              padding: EdgeInsets.symmetric(horizontal: width * 0.08),
-              child: Column(
-                children: [
-                  Text(
-                    'Sign in Now',
-                    style: TextStyle(fontSize: width * 0.12),
-                  ),
-                  Text(
-                    'Please enter your information below in order to login to your account',
-                    style: TextStyle(fontSize: width * 0.05),
-                  ),
-                  TextFormField(),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  TextFormField(
-                    decoration:
-                        InputDecoration(suffixIcon: Icon(Icons.visibility)),
-                  ),
-                  ElevatedButton(
-                      onPressed: () {
-                        loginCubit.signInPressed(
-                            email: 'potato@gmail.com', password: '123456');
-                      },
-                      child: Text("Sign in")),
-                  state is LoginLoadingState
-                      ? CircularProgressIndicator()
-                      : SizedBox(),
-                ],
-              ),
+        builder:(context,state){
+          var loginCubit=LoginCubit.get(context);
+          return
+         Scaffold(
+          body: Padding(
+            padding: EdgeInsets.symmetric(horizontal: width * 0.08),
+            child: Column(
+              children: [
+                Text(
+                  'Sign in Now',
+                  style: TextStyle(fontSize: width * 0.12),
+                ),
+                Text(
+                  'Please enter your information below in order to login to your account',
+                  style: TextStyle(fontSize: width * 0.05),
+                ),
+                TextFormField(),
+                SizedBox(
+                  height: 30,
+                ),
+                TextFormField(
+                  decoration:
+                      InputDecoration(suffixIcon: Icon(Icons.visibility)),
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      loginCubit.signInPressed(
+                          email: 'potato@gmail.com', password: '123456');
+                    },
+                    child: Text("Sign in")),
+                state is LoginLoadingState
+                    ? CircularProgressIndicator()
+                    : SizedBox(),
+              ],
             ),
-          );
-        },
+          ),
+        );
+        }
       ),
     );
   }
